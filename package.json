@@ -15,8 +15,9 @@
     "standard": "^9.0.2"
   },
   "scripts": {
-    "lint": "standard lib"
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "standard lib",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "rust-dsa": "cd rust/src/ && cargo run main.rs && cd ../../"
   },
   "author": "",
   "license": "ISC"

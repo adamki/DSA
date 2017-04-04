@@ -1,0 +1,6 @@
+[package]
+name = "dsa"
+version = "0.1.0"
+authors = ["Adamki <adajensen@gmail.com>"]
+
+[dependencies]
