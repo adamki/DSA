@@ -17,9 +17,7 @@ const compare = (left, right) => {
 }
 
 const merge = arr => {
-  if (arr.length <= 1) {
-    return arr
-  } else {
+  if (arr.length > 1) {
     const half = Math.ceil(arr.length / 2)
     const left = arr.splice(0, half)
     const right = arr
@@ -29,4 +27,6 @@ const merge = arr => {
 
     return compare(l, r)
   }
+
+  return arr
 }
