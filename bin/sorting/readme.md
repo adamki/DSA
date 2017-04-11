@@ -84,10 +84,10 @@ Similar to Bubble Sort, optimization comes in the form of setting a smaller loop
 range. Improvements are marginal.
 
 
-Logarithmic Sorts - O(logn)
+Logarithmic Sorts - O(logn) A.K.A Divide and Conquer
 ===
 
-### Merge Sort a.k.a. Divide and conquer:
+### Merge Sort
 ##### Summary
 Step 1: *Divide* Merge Sort takes an un sorted array and recursively 'halves' the array until the
 arrays reach a length of 1.
@@ -121,9 +121,46 @@ MergeSort(n) = runs in O(n logn)
 ##### Optimization
 
 
+### Quick Sort
+##### Summary
+Step 1: * Divide * Quick sort uses a Divide and conquer approach by tracking a
+partition index as well as a left and right collection. For every iteration,
+Quick sort starts with a pivot and compares it to every index of the given array.
+
+I used the [Lomuto](http://www.geeksforgeeks.org/hoares-vs-lomuto-partition-scheme-quicksort/)
+partition scheme which returns an index value that represents the current partition.
+I can then recursively call quick() for both the left and right side.
+
+##### PsuedoCode
+```
+lomutoPartition(arr, lo, hi)
+  set pivotLoc var to first item aka "lo" index
+
+  for each index from lo - hi
+    if current value is less than arr[hi]
+      swap i with pivotLoc
+
+  swap pivotLoc with hi
+  return pivotLoc
+
+quick(arr, lo, hi)
+  handle undefined lo and hi values
+
+  if lo is less than hi
+    set partition using lomuto(lo, hi)
+    quick(arr, lo, partition - 1)
+    quick(arr, partition + 1, hi)
+
+  return arr
+```
+
+##### Time Complexity
+QuickSort(n) = runs in O(n logn)
 
 Linear Sorts - O(n)
 ===
+
+
 
 
 
