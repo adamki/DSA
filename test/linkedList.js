@@ -40,13 +40,19 @@ describe('LinkedList', () => {
       expect(testList.counter).to.equal(nodeCount)
     })
 
+    it('can #append() to an emptyList', () => {
+      testList.append(1)
+      expect(testList.counter).to.equal(1)
+      expect(testList.print()).to.equal(`1 : null`)
+    })
+
     it('can #removeTail()', () => {
       const nodeCount = 4
       for (let i = 0; i < nodeCount; i++) {
         testList.append(i)
       }
-      testList.removeTail()
-      expect(testList.counter).to.equal(nodeCount - 1)
+
+      expect(testList.removeTail()).to.equal(nodeCount - 1)
       expect(testList.tail).to.eql({value: 2, tail: null})
     })
   })
@@ -66,8 +72,8 @@ describe('LinkedList', () => {
       expect(testList.print()).to.equal(printedNodes)
     })
 
-    it('handles a headless list', () => {
-      expect(testList.print()).to.equal('null')
+    xit('handles a headless list', () => {
+      expect(testList.print()).to.eql(`This is a headless LinkedList. Please add a node`)
     })
   })
 
@@ -156,6 +162,15 @@ describe('LinkedList', () => {
       for (let i = 1; i < 4; i++) { testList.append(i) }
 
       const node = testList.findNode(2)
+      expect(node).to.eql({ value: 2, tail: { value: 3, tail: null} })
+    })
+  })
+
+  describe('#findPreviousNode()', () => {
+    it('can return a previousNode when given a target value', () => {
+      for (let i = 1; i < 4; i++) { testList.append(i) }
+
+      const node = testList.findPreviousNode(3)
       expect(node).to.eql({ value: 2, tail: { value: 3, tail: null} })
     })
   })
